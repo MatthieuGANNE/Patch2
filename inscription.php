@@ -10,7 +10,7 @@ function inscription(){
                     Mot de passe<input type=\"password\" name=\"mdp1\"><br/>
                     Confirmation de mot de passe<input type=\"password\" name=\"mdp2\"><br/>
         	    <input type=\"submit\" value=\"Valider  \">
-         </form> "  ;
+         </form><br>"  ;
 	}else {
 		$nom=$_SESSION["nom"];
 		$prenom=$_SESSION["prenom"];
@@ -26,7 +26,7 @@ function inscription(){
 
 			</form>
 	
-";
+<br>";
 	}	
 }
 ?>	
