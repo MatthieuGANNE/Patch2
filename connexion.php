@@ -8,7 +8,7 @@ function connexion(){
                  ID:<input type=\"text\" name=\"nickname\"><br/>
                  PASSWORD:<input type=\"password\" name=\"mdp\"><br/>
                  <input type=\"submit\" value=\"Connexion\"><br/>
-           </form> ";
+           </form><br>";
 }
 ?>
        
