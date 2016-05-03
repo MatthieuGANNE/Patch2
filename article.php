@@ -32,7 +32,7 @@ function article_entier($n){
               <h2>$ligne1[nom] $ligne1[prenom] $ligne1[pseudo]</h2>
               <h3>$ligne[date]</h3>
               <p>$ligne[contenu]</p>
-              </div>";
+              </div> <br>";
 }
 
 function afficher_article($n){
@@ -64,7 +64,7 @@ function afficher_article($n){
               <h2>$ligne1[nom] $ligne1[prenom] $ligne1[pseudo]</h2>
               <h3>$ligne[date]</h3>
               <p>$ligne[contenu]</p>
-              </div>";
+              </div><br>";
 	}else {
 		return "<div id=\"article\">
               <h1>$ligne[nom] $ligne[genre]</h1>
@@ -77,7 +77,7 @@ function afficher_article($n){
 			  <form action=\"index.php?page=sauvegarde_commentaire\" method=\"post\" id=\"comentaire\">
 			  <input type=\"hidden\" name=\"id\" value=$_GET[id]>
 			  <input type=\"submit\" value=\"Envoyer\"><br/>
-			  </form>";
+			  </form><br>";
 		
 	}
 }
