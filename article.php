@@ -58,16 +58,21 @@ function afficher_article($n){
 			 WHERE id='$ligne[id_users]'";
 	$resultat1 = mysqli_query($connexion,$req1);
 	$ligne1 = mysqli_fetch_assoc($resultat1);
+	$req2="SELECT nom
+	        FROM categorie
+			WHERE id=$ligne[id_categorie]";
+	$resultat2 = mysqli_query($connexion,$req2);
+	$ligne2 = mysqli_fetch_assoc($resultat2);
 	if(!isset($_SESSION["mail"])){
       return "<div id=\"article\">
-              <h1>$ligne[nom] $ligne[genre]</h1>
+              <h1>$ligne[nom] $ligne2[nom]</h1>
               <h2>$ligne1[nom] $ligne1[prenom] $ligne1[pseudo]</h2>
               <h3>$ligne[date]</h3>
               <p>$ligne[contenu]</p>
               </div><br>";
 	}else {
 		return "<div id=\"article\">
-              <h1>$ligne[nom] $ligne[genre]</h1>
+              <h1>$ligne[nom] $ligne2[nom]</h1>
               <h2>$ligne1[nom] $ligne1[prenom] $ligne1[pseudo]</h2>
               <h3>$ligne[date]</h3>
               <p>$ligne[contenu]</p>
