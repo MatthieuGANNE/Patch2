@@ -74,6 +74,9 @@
        if ($_GET["page"]=="mes_articles"){
           echo afficher_titre_utilisateur();
        }   
+        if ($_GET["page"]=="modifier_page"){
+		   echo article_modification($_GET['id']);
+	   }
      }
        ?>
 	   <br/>
