@@ -297,7 +297,7 @@ function afficher_titre_article(){
 			$ligne = mysqli_fetch_assoc($resultat);
 			}
 	}
-	function afficher_titre_utilisateur(){
+	function afficher_titre_utilisateur($session_mail){
 		$server= "localhost";
 			$user="root";
 			$base="blog";
@@ -311,7 +311,7 @@ function afficher_titre_article(){
 			}
 			$reqid= "SELECT id
 				FROM users
-				WHERE mail='$_SESSION[mail]'";
+				WHERE mail='$session_mail'";
 			$resultatid = mysqli_query($connexion, $reqid);
 			$ligneid = mysqli_fetch_assoc($resultatid);
 			$req= "SELECT id, nom
