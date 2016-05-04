@@ -84,15 +84,29 @@ function afficher_article($n){
 function article_form(){ // Ecriture d'un article
 	  echo "<form action=\"index.php?page=sauvegarde_article\" method=\"post\" id=\"article\">
                  Titre:<input type=\"text\" name=\"titre\"><br/>
-				 Genre:	<SELECT name=\"genre\" size=\"1\"> 
-			<OPTION>International
-			<OPTION>Politique
-			<OPTION>Economie
-			<OPTION>Planète
-			<OPTION>Sport
-			<OPTION>Sciences
-		</SELECT> <br>
-                 <input type=\"submit\" value=\"Envoyer\"><br/>
+				 Genre:	<SELECT name=\"genre\" size=\"1\">" ;
+				 $server= "localhost";
+			$user="root";
+			$base="blog";
+			$password="";
+				 $connexion = mysqli_connect($server, $user, $password,$base);
+				 if (!$connexion){
+			echo "connexion none"; exit;
+			}
+			if (!mysqli_select_db($connexion,$base)){
+			echo "pas de base"; exit;
+			}	
+		$req= "SELECT *
+        FROM categorie
+        WHERE 1";
+		$resultat = mysqli_query($connexion,$req);
+	    $ligne = mysqli_fetch_assoc($resultat);
+				 while($ligne){
+					echo "<option value=\"$ligne[id]\">$ligne[nom]</option>";	
+					$ligne = mysqli_fetch_assoc($resultat);					 
+				 }
+				 echo "</SELECT>";
+                 echo "<input type=\"submit\" value=\"Envoyer\"><br/>
            </form>
 		   Contenu : <br> <textarea rows=\"25\" cols=\"75\" name=\"contenu\" form=\"article\">
 Enter text here...</textarea>";
