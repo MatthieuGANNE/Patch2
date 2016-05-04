@@ -325,7 +325,7 @@ function afficher_titre_article(){
 		}
 }
 function article_modification($n){ // modification d'un article
-	  echo "<form action=\"index.php?page=modifier_article\" method=\"post\" id=\"article\">"
+	  echo "<form action=\"index.php?page=modifier_article\" method=\"post\" id=\"article\">";
                   $server= "localhost";
 				$user="root";
 				$base="blog";
@@ -344,7 +344,7 @@ function article_modification($n){ // modification d'un article
 	    $ligne = mysqli_fetch_assoc($resultat);
 		$req1= "SELECT *
         FROM categorie
-        WHERE id='$ligne['id_categorie']";	
+        WHERE id='$ligne[id_categorie]'";	
 		
 		$resultat1 = mysqli_query($connexion,$req1);
 	    $ligne1 = mysqli_fetch_assoc($resultat1);
