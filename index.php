@@ -70,7 +70,10 @@
        }
 	    if ($_GET["page"]=="ancien_article"){
           echo afficher_titre_article();
-       }         
+       }       
+       if ($_GET["page"]=="mes_articles"){
+          echo afficher_titre_utilisateur();
+       }   
      }
        ?>
 	   <br/>
