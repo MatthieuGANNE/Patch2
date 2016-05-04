@@ -217,7 +217,7 @@ function accueil_article(){ // affichage des articles dans la page d'accueil
 			}	
 		}
 		$j = 7;
-		while($j != 0){
+		while($j != -1){
 			echo($array[$j]);
 			$j--;
 		}
