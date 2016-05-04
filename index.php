@@ -72,14 +72,39 @@
           echo afficher_titre_article();
        }       
        if ($_GET["page"]=="mes_articles"){
-          echo afficher_titre_utilisateur();
-       }   
+		   echo afficher_titre_utilisateur($_SESSION['mail']);
+	   }  
         if ($_GET["page"]=="modifier_page"){
 		   echo article_modification($_GET['id']);
 	   }
 	  if ($_GET["page"]=="supprimer_article"){
 	   echo supprimer_article();
 	  }
+	  if ($_GET["page"]=="moderation"){
+		   echo page_moderation();
+	   }
+	   if ($_GET["page"]=="article_utilisateur"){
+		   $server= "localhost";
+		$user="root";
+		$base="blog";
+		$password="";
+		$connexion = mysqli_connect($server, $user, $password,$base);
+			if (!$connexion){
+			echo "connexion none"; exit;
+			}
+			if (!mysqli_select_db($connexion,$base)){
+			echo "pas de base"; exit;
+			}
+		   $req= "SELECT mail
+				  FROM users
+					WHERE id=$_GET[id]";
+		$resultat = mysqli_query($connexion, $req);
+		$ligne = mysqli_fetch_assoc($resultat);
+		   echo afficher_titre_utilisateur($ligne['mail']);
+	   }	
+	   if ($_GET["page"]=="supprimer_utilisateur"){
+		   echo supprimer_utilisateur();
+	   }
      }
        ?>
 	   <br/>
