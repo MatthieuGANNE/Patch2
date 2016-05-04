@@ -1,39 +1,5 @@
 <?php
-function article_entier($n){
-	$server= "localhost";
-	$user="root";
-	$base="blog";
-	$password="";
-	$connexion = mysqli_connect($server, $user, $password,$base);
-			if (!$connexion){
-			echo "connexion none"; exit;
-			}
-			if (!mysqli_select_db($connexion,$base)){
-			echo "pas de base"; exit;
-			}	
-		$req= "SELECT id
-        FROM article
-        WHERE 1";
-		$resultat = mysqli_query($connexion, $req);
-	    $ligne = mysqli_fetch_assoc($resultat);
-        $req= "SELECT *
-              FROM article
-              WHERE id=$n";
-		$resultat = mysqli_query($connexion, $req);
-		$ligne = mysqli_fetch_assoc($resultat);
-	
-	$req1 = "SELECT nom, prenom, pseudo 
-			 FROM users
-			 WHERE id='$ligne[id_users]'";
-	$resultat1 = mysqli_query($connexion,$req1);
-	$ligne1 = mysqli_fetch_assoc($resultat1);
-      return "<div id=\"article\">
-              <h1><a href=\"index.php?page=consulter&id=$ligne[id]\">$ligne[nom]</a> $ligne[genre]</h1>
-              <h2>$ligne1[nom] $ligne1[prenom] $ligne1[pseudo]</h2>
-              <h3>$ligne[date]</h3>
-              <p>$ligne[contenu]</p>
-              </div> <br>";
-}
+
 
 function afficher_article($n){
 	$server= "localhost";
