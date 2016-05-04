@@ -3,6 +3,7 @@ function afficher_header(){
 $r="<p>";
   $s="<h1>Ceci est un site</h1>";
    $s.="<a href=\"index.php?page=ancien_article\">Ancien article</a><br/>";
+   if(isset($_SESSION['mail']))
   $s.="<a href=\"index.php?page=mes_articles\">Mes articles</a>";
   if (isset($_SESSION["inscrit"])){
      $r.="<a href=\"index.php?page=modifier\">Modifiez mon profil</a> <br>";
