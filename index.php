@@ -77,6 +77,9 @@
         if ($_GET["page"]=="modifier_page"){
 		   echo article_modification($_GET['id']);
 	   }
+	  if ($_GET["page"]=="supprimer_article"){
+	   echo supprimer_article();
+	  }
      }
        ?>
 	   <br/>
