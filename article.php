@@ -231,7 +231,6 @@ function accueil_article(){ // affichage des articles dans la page d'accueil
 		$i=0;
 		while($ligne){
 		$array[$i]= article_partiel($ligne['id']);
-		echo $ligne['id'] . " ";
 		$ligne = mysqli_fetch_assoc($resultat);
 		$i = $i + 1;
 		if($i == 8) {
