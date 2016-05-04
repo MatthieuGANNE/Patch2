@@ -375,4 +375,22 @@ function sauvegarde_modification_article() {
 	header('Location: index.php');	
 	echo "Publication réussie<br>";
 }
+function supprimer_article(){
+	$server= "localhost";
+				$user="root";
+				$base="blog";
+				$password="";
+				 $connexion = mysqli_connect($server, $user, $password,$base);
+				 if (!$connexion){
+			echo "connexion none"; exit;
+			}
+			if (!mysqli_select_db($connexion,$base)){
+			echo "pas de base"; exit;
+			}	
+			$req= "DELETE FROM article
+						WHERE id=$_GET[id]";
+			mysqli_query($connexion,$req);
+			echo "Cetter article a bien été supprimé<br>";
+			echo "<a href=index.php>Retourner à l'accueil</a><br>";
+}
 ?>
