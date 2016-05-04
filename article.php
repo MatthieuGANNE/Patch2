@@ -24,6 +24,9 @@ function afficher_article($n){
 			 WHERE id='$ligne[id_users]'";
 	$resultat1 = mysqli_query($connexion,$req1);
 	$ligne1 = mysqli_fetch_assoc($resultat1);
+	if ($_SESSION["rank"]==1 || $ligne1["pseudo"]==$_SESSION["pseudo"]){
+		echo "<a href=\"index.php?page=modifier_page&id=$n\">Modifier</a><br/>";
+	}
 	$req2="SELECT nom
 	        FROM categorie
 			WHERE id=$ligne[id_categorie]";
