@@ -194,8 +194,14 @@ function article_partiel($n){
 	$resultat1 = mysqli_query($connexion,$req1);
 	$ligne1 = mysqli_fetch_assoc($resultat1);
 	$contenu=substr($ligne["contenu"],0,200);
+	$req2="SELECT nom
+	        FROM categorie
+			WHERE id=$ligne[id_categorie]";
+	$resultat2 = mysqli_query($connexion,$req2);
+	$ligne2 = mysqli_fetch_assoc($resultat2);
+			
       return "<div id=\"article\">
-              <h1><a href=\"index.php?page=consulter&id=$ligne[id]\">$ligne[nom]</a> $ligne[genre]</h1>
+              <h1><a href=\"index.php?page=consulter&id=$ligne[id]\">$ligne[nom]</a> $ligne2[nom]</h1>
               <h2>$ligne1[nom] $ligne1[prenom] $ligne1[pseudo]</h2>
               <h3>$ligne[date]</h3>
               <p>$contenu</p>
