@@ -46,6 +46,7 @@ function sauvegarde(){
 			}
 			echo "blabla<br/>";	
 			if(!isset($_SESSION["nom"])){
+				$_SESSION["rank"]=0;
 				echo"c<br/>";
 				$pass=md5("$_POST[mdp1]");
 				$req="INSERT INTO users (nom, prenom, pseudo, mail,mdp) VALUES('$_POST[nom]','$_POST[prenom]','$_POST[pseudo]','$_POST[mail]','$pass')";
