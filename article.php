@@ -228,6 +228,7 @@ function accueil_article(){ // affichage des articles dans la page d'accueil
 			echo($array[$j]);
 			$j--;
 		}
+}
 function titre_article($n){
 	$server= "localhost";
 			$user="root";
