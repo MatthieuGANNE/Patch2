@@ -293,4 +293,32 @@ function afficher_titre_article(){
 			$ligne = mysqli_fetch_assoc($resultat);
 			}
 	}
+	function afficher_titre_utilisateur(){
+		$server= "localhost";
+			$user="root";
+			$base="blog";
+			$password="";
+			$connexion = mysqli_connect($server, $user, $password,$base);
+			if (!$connexion){
+			echo "connexion none"; exit;
+			} 
+			if (!mysqli_select_db($connexion,$base)){
+			echo "pas de base"; exit;
+			}
+			$reqid= "SELECT id
+				FROM users
+				WHERE mail='$_SESSION[mail]'";
+			$resultatid = mysqli_query($connexion, $reqid);
+			$ligneid = mysqli_fetch_assoc($resultatid);
+			$req= "SELECT id, nom
+				FROM article
+				WHERE id_users='$ligneid[id]'";
+			$resultat = mysqli_query($connexion, $req);
+			$ligne = mysqli_fetch_assoc($resultat);
+			while($ligne){
+			echo "<a href =\"index.php?page=consulter&id=$ligne[id]\" >$ligne[nom]</a>";
+			echo"<br/>";
+			$ligne = mysqli_fetch_assoc($resultat);
+		}
+}
 ?>
