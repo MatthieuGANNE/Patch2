@@ -259,15 +259,38 @@ function afficher_titre_article(){
 			if (!mysqli_select_db($connexion,$base)){
 			echo "pas de base"; exit;
 			}
+			echo "<form action=\"index.php?page=ancien_article\" method=\"post\">
+			Genre:	<SELECT name=\"genre\" size=\"1\">" ;
+			$req= "SELECT *
+			FROM categorie
+			WHERE 1";
+			$resultat = mysqli_query($connexion,$req);
+			$ligne = mysqli_fetch_assoc($resultat);
+				 while($ligne){
+					echo "<option value=\"$ligne[id]\">$ligne[nom]</option>";	
+					$ligne = mysqli_fetch_assoc($resultat);					 
+				 }
+				 echo "</SELECT>";
+                 echo "<input type=\"submit\" value=\"Envoyer\"><br/>
+           </form>";
+			
+			
+			
+			if (!isset($_POST["genre"])){
 			$req= "SELECT id
 				FROM article
 				WHERE 1";
+			} else {
+				$req="SELECT id
+				FROM article
+				WHERE id_categorie=$_POST[genre]";
+			}
 			$resultat = mysqli_query($connexion, $req);
 			$ligne = mysqli_fetch_assoc($resultat);
 			while($ligne){
 			echo titre_article($ligne['id']);
 			echo"<br/>";
 			$ligne = mysqli_fetch_assoc($resultat);
-		}
-}
-
+			}
+	}
+?>
