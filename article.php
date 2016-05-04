@@ -324,4 +324,35 @@ function afficher_titre_article(){
 			$ligne = mysqli_fetch_assoc($resultat);
 		}
 }
+function article_modification($n){ // modification d'un article
+	  echo "<form action=\"index.php?page=modifier_article\" method=\"post\" id=\"article\">"
+                  $server= "localhost";
+				$user="root";
+				$base="blog";
+				$password="";
+				 $connexion = mysqli_connect($server, $user, $password,$base);
+				 if (!$connexion){
+			echo "connexion none"; exit;
+			}
+			if (!mysqli_select_db($connexion,$base)){
+			echo "pas de base"; exit;
+			}	$req= "SELECT *
+        FROM article
+        WHERE id='$n'";	
+		
+		$resultat = mysqli_query($connexion,$req);
+	    $ligne = mysqli_fetch_assoc($resultat);
+		$req1= "SELECT *
+        FROM categorie
+        WHERE id='$ligne['id_categorie']";	
+		
+		$resultat1 = mysqli_query($connexion,$req1);
+	    $ligne1 = mysqli_fetch_assoc($resultat1);
+			echo "Titre:$ligne[nom]
+				 Genre:$ligne1[nom]<br>";
+                 echo "<input type=\"submit\" value=\"Envoyer\"><br/>
+           </form>
+		   Contenu : <br> <textarea rows=\"25\" cols=\"75\" name=\"contenu\" form=\"article\">
+	$ligne[contenu]</textarea>";
+}
 ?>
