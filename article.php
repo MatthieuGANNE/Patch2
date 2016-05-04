@@ -355,4 +355,24 @@ function article_modification($n){ // modification d'un article
 		   Contenu : <br> <textarea rows=\"25\" cols=\"75\" name=\"contenu\" form=\"article\">
 	$ligne[contenu]</textarea>";
 }
+function sauvegarde_modification_article() {
+	 $server= "localhost";
+			$user="root";
+			$base="blog";
+			$password="";
+			$connexion = mysqli_connect($server, $user, $password,$base);
+			if (!$connexion){
+			echo "connexion none"; exit;
+			} 
+			if (!mysqli_select_db($connexion,$base)){
+			echo "pas de base"; exit;
+			}	  
+			$req="UPDATE article 
+				SET contenu='$_POST[contenu]'
+				WHERE id=$_GET[id]";
+	mysqli_query($connexion, $req) OR die(mysqli_sqlstate($connexion));
+	
+	header('Location: index.php');	
+	echo "Publication réussie<br>";
+}
 ?>
