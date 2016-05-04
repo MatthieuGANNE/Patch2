@@ -203,16 +203,31 @@ function accueil_article(){ // affichage des articles dans la page d'accueil
 			
 		$req= "SELECT id
         FROM article
-        WHERE 1";
+        WHERE 1
+		ORDER BY id";
 		$resultat = mysqli_query($connexion, $req);
 	    $ligne = mysqli_fetch_assoc($resultat);
+		$array = new SplFixedArray(8);
+		$i=0;
 		while($ligne){
-		echo article_partiel($ligne['id']);
+		$array[$i]= article_partiel($ligne['id']);
+		echo $ligne['id'] . " ";
 		$ligne = mysqli_fetch_assoc($resultat);
+		$i = $i + 1;
+		if($i == 8) {
+		$a = 1;
+			while($a <= 7){
+				$array[$a - 1]=$array[$a];
+				$a= $a + 1;
+				}
+			$i--;
+			}	
 		}
-		 
-	
-}
+		$j = 7;
+		while($j != 0){
+			echo($array[$j]);
+			$j--;
+		}
 function titre_article($n){
 	$server= "localhost";
 			$user="root";
