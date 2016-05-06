@@ -14,7 +14,7 @@ function page_moderation(){
 			}
         $req= "SELECT pseudo,id
               FROM users
-              WHERE 1";
+              WHERE rank=0";
 		$resultat = mysqli_query($connexion, $req);
 		$ligne = mysqli_fetch_assoc($resultat);
 		while($ligne){
