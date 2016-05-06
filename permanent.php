@@ -6,7 +6,8 @@ $r="<p>";
    if(isset($_SESSION['mail'])){
   $s.="<a href=\"index.php?page=mes_articles\">Mes articles</a>";
  if ($_SESSION["rank"]==1){
-		  $s.="<a href=\"index.php?page=moderation\">Gérer les comptes utilisateurs</a>";
+		  $s.="<a href=\"index.php?page=moderation\">Gérer les comptes utilisateurs</a><br>
+		  	<a href=\"index.php?page=moderation_categorie\">Gérer les catégories</a><br>";
 	  }
      $r.="<a href=\"index.php?page=modifier\">Modifiez mon profil</a> <br>";
      $r.="<a href=\"index.php?page=deconnexion\">Deconnexion</a>";
