@@ -108,6 +108,9 @@
 	   if ($_GET["page"]=="moderation_categorie"){
 		   echo moderation_categorie();
 	   }
+	   if ($_GET["page"]=="supprimer_categorie"){
+			echo supprimer_categorie();
+	   }
      }
        ?>
 	   <br/>
