@@ -104,9 +104,11 @@ function article_sauvegarde(){
               WHERE mail ='$_SESSION[mail]'";
 		 $resultatid = mysqli_query($connexion, $reqid);
 	     $ligne = mysqli_fetch_assoc($resultatid);
+	     $contenu=mysqli_real_escape_string($connexion,$_POST['contenu']);
+		 $titre=mysqli_real_escape_string($connexion,$_POST['titre']);
 	$date = date("Y-m-d");
 			$req="INSERT INTO article (nom, date, id_users, contenu, genre)
- VALUES ('$_POST[titre]', '$date', '$ligne[id]', '$_POST[contenu]', '$_POST[genre]')";
+ VALUES ('$titre', '$date', '$ligne[id]', '$contenu', '$_POST[genre]')";
 	mysqli_query($connexion, $req) OR die(mysqli_sqlstate($connexion));
 	echo "Publication réussie";
 	header('Location: index.php');
