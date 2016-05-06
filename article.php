@@ -266,7 +266,8 @@ function afficher_titre_article(){
 			echo "pas de base"; exit;
 			}
 			echo "<form action=\"index.php?page=ancien_article\" method=\"post\">
-			Genre:	<SELECT name=\"genre\" size=\"1\">" ;
+			Genre:	<SELECT name=\"genre\" size=\"1\">
+				<option value=\"-1\">Tous</option>" ;
 			$req= "SELECT *
 			FROM categorie
 			WHERE 1";
@@ -282,7 +283,7 @@ function afficher_titre_article(){
 			
 			
 			
-			if (!isset($_POST["genre"])){
+			if (!isset($_POST["genre"]) || $_POST['genre']==-1){
 			$req= "SELECT id
 				FROM article
 				WHERE 1";
