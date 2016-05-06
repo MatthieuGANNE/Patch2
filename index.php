@@ -105,6 +105,9 @@
 	   if ($_GET["page"]=="supprimer_utilisateur"){
 		   echo supprimer_utilisateur();
 	   }
+	   if ($_GET["page"]=="moderation_categorie"){
+		   echo moderation_categorie();
+	   }
      }
        ?>
 	   <br/>
