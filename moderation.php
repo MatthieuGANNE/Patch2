@@ -41,4 +41,58 @@ function supprimer_utilisateur(){
 ;		echo "Le profil a bien été supprimé<br>";
 }
 
+function moderation_categorie(){
+	echo "<form action=\"index.php?page=moderation_categorie\" method=\"post\">
+			Ajoutez une nouvelle catégorie<input type=\"text\" name=\"nouvelle_categorie\"</input>
+			<input type=\"submit\" value=\"Envoi\"</input>
+			</form>";
+	$server= "localhost";
+	$user="root";
+	$base="blog";
+	$password="";
+	$connexion = mysqli_connect($server, $user, $password,$base);
+			if (!$connexion){
+			echo "connexion none"; exit;
+			}
+			if (!mysqli_select_db($connexion,$base)){
+			echo "pas de base"; exit;
+			}
+	if (isset($_POST["nouvelle_categorie"])){
+		$req="INSERT INTO categorie (nom) VALUES ('$_POST[nouvelle_categorie]')";
+		mysqli_query($connexion,$req);
+		echo "$_POST[nouvelle_categorie] a bien été ajouté à la liste des catégories<br>";
+	}
+	$req="SELECT *
+		  FROM categorie
+		  WHERE 1";
+		$resultat=mysqli_query($connexion, $req);
+		$ligne=mysqli_fetch_assoc($resultat);
+		while($ligne){
+			echo"$ligne[nom]<a href=\"index.php?page=supprimer_categorie&id=$ligne[id]\">Supprimer cet gatégorie</a><br>";
+			$ligne=mysqli_fetch_assoc($resultat);
+		}	
+}
+
+function supprimer_categorie(){
+	
+	$server= "localhost";
+	$user="root";
+	$base="blog";
+	$password="";
+	$connexion = mysqli_connect($server, $user, $password,$base);
+		if (!$connexion){
+			echo "connexion none"; exit;
+		}
+		if (!mysqli_select_db($connexion,$base)){
+			echo "pas de base"; exit;
+		}
+	$req="UPDATE article
+			SET id_categorie = -1
+			WHERE id_categorie = $_GET[id]";
+	mysqli_query($connexion, $req);
+	$req="DELETE FROM categorie
+	WHERE id=$_GET[id]";
+	mysqli_query($connexion,$req);
+	
+}
 ?>
