@@ -12,7 +12,7 @@ function afficher_header(){
 	  $s.="</div>";
   }
    
-  $s.="<h1> Ceci est un site</h1>";
+  $s.="<h1>  <a href=index.php>Ceci est un site</a></h1>";
   $s.="<div class=menu><a href=\"index.php?page=ancien_article\">Ancien article</a>";
   if (isset($mail)){
 	  $s.="<a href=\"index.php?page=mes_articles\">Mes articles</a>";
