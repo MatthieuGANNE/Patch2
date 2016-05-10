@@ -1,0 +1,39 @@
+body {
+	position: relative;
+	}
+header {
+	display:float;
+	border:2px solid red;
+	border-radius:10px;
+	padding-bottom:5px;
+}
+header .droite {
+	float:right;
+}
+header h1 a {
+	text-decoration:none;
+	color:black;
+}
+.menu a{
+	border: 1px solid black;
+	text-decoration:none;
+	color: black;
+}
+footer {
+	position: relative; 
+	}
+	
+.fixe{
+	position: fixed;
+	bottom: 0; 
+	left: 0; 
+	right: 0;
+	background-color:lightgrey;
+}
+#accueil_article{
+	display:float;
+	text-align:center;
+}
+#article_entier h1 a{
+	font-size:small;
+}
