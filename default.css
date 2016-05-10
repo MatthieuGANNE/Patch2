@@ -10,6 +10,10 @@ header {
 header .droite {
 	float:right;
 }
+header h1 a {
+	text-decoration:none;
+	color:black;
+}
 .menu a{
 	border: 1px solid black;
 	text-decoration:none;
