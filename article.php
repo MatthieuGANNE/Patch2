@@ -156,10 +156,14 @@ function article_commentaire($n){
 				WHERE id=$n)";
 				$resultat2=mysqli_query($connexion,$req);
 				$ligne2=mysqli_fetch_assoc($resultat2);
+		$nom = $ligne1['pseudo'];		
+		if ($nom==""){
+			$nom="<em>Banni</em>";
+		}
 		if (!(isset($_SESSION["mail"])) || (!($_SESSION["rank"]==1 || $ligne1["pseudo"]==$_SESSION["pseudo"] || $ligne2["pseudo"]==$_SESSION["pseudo"]))){
-			echo $ligne1['pseudo'] . " ".  $ligne['date'] ."<br/>". $ligne['contenu'] ."<br/>";
+			echo $nom . " ".  $ligne['date'] ."<br/>". $ligne['contenu'] ."<br/>";
 		} else {
-			echo $ligne1['pseudo'] . " ".  $ligne['date'] . " <a href=\"index.php?page=supprimer_commentaire&id=$ligne[id]\">Supprimer</a><br>"  . $ligne['contenu'] ."<br><br>";
+			echo $nom . " ".  $ligne['date'] . " <a href=\"index.php?page=supprimer_commentaire&id=$ligne[id]\">Supprimer</a><br>"  . $ligne['contenu'] ."<br><br>";
 		}
 		
 		$ligne = mysqli_fetch_assoc($resultat);
