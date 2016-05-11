@@ -39,7 +39,7 @@ function afficher_article($n){
 	}
 	if ($_SESSION["rank"]==1 || $ligne1["pseudo"]==$_SESSION["pseudo"]){
 		return "<div id=\"article_entier\">
-              <h1>$ligne[nom] $ligne2[nom]<a href=\"index.php?page=modifier_page&id=$n\">Modifier</a> <a href=\"index.php?page=supprimer_article&id=$n\">Supprimer</a><br/></h1>
+              <h1>$ligne[nom] <span id=genre>$ligne2[nom]</span><a href=\"index.php?page=modifier_page&id=$n\">Modifier</a> <a href=\"index.php?page=supprimer_article&id=$n\">Supprimer</a><br/></h1>
               <h2>$ligne1[nom] $ligne1[prenom] $ligne1[pseudo]</h2>
               <h3>$ligne[date]</h3>
               <p>$ligne[contenu]</p>
@@ -51,7 +51,7 @@ function afficher_article($n){
 			  </form><br>";
 	}
 		return "<div id=\"article\">
-              <h1>$ligne[nom] $ligne2[nom]</h1>
+              <h1>$ligne[nom] <span id=genre>$ligne2[nom]</span></h1>
               <h2>$ligne1[nom] $ligne1[prenom] $ligne1[pseudo]</h2>
               <h3>$ligne[date]</h3>
               <p>$ligne[contenu]</p>
@@ -202,7 +202,7 @@ function article_partiel($n){
 	$ligne2 = mysqli_fetch_assoc($resultat2);
 			
       return "<div id=\"article\">
-              <h1><a href=\"index.php?page=consulter&id=$ligne[id]\">$ligne[nom]</a> $ligne2[nom]</h1>
+              <h1><a href=\"index.php?page=consulter&id=$ligne[id]\">$ligne[nom]</a> <span id=genre>$ligne2[nom]</span></h1>
               <h2>$ligne1[nom] $ligne1[prenom] $ligne1[pseudo]</h2>
               <h3>$ligne[date]</h3>
               <p>$contenu</p>
