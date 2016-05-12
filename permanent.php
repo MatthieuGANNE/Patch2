@@ -1,5 +1,5 @@
 <?php
-function afficher_header(){
+function afficher_header(){ // affiche différents headers si l'utilisateur est connecté ou non ou si c'est un administrateur 
   $s="<div class=droite>".accueil();
   if (isset($_SESSION["mail"])){
 	  $mail=true;
