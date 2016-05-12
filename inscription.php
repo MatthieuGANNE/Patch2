@@ -1,7 +1,7 @@
 <?php
   
 function inscription(){
-	if (!isset($_SESSION["nom"])){
+	if (!isset($_SESSION["nom"])){ // Si l'utilisateur n'est pas encore inscrit on envoie un formulaire vide
 		return  "<form action=\"index.php?page=sauvegarde\" method=\"post\">
                     Prenom<input type=\"text\" name=\"prenom\"><br/>                 
                     Nom<input type=\"text\" name=\"nom\"><br/>
@@ -11,7 +11,7 @@ function inscription(){
                     Confirmation de mot de passe<input type=\"password\" name=\"mdp2\"><br/>
         	    <input type=\"submit\" value=\"Valider  \">
          </form><br>"  ;
-	}else {
+	}else { // Sinon on envoie un formulaire près remplie
 		$nom=$_SESSION["nom"];
 		$prenom=$_SESSION["prenom"];
                 // $date=$_SESSION["date"]; On fait une date ??
