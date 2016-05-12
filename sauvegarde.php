@@ -1,6 +1,5 @@
 <?php 
 function sauvegarde(){	
-		echo "bb<br/>";
          $remplis=true;
          $valide=true;
 
@@ -25,24 +24,19 @@ function sauvegarde(){
          return "c'est pas valide <br/> <a href=\"index.php?page=inscription\">Retourner au form</a>";
       } else {
    
-			echo"blbl<br/>";
 			$server= "localhost";
 			$user="root";
 			$base="blog";
 			$password="";
 			$connexion = mysqli_connect($server, $user, $password);//  mysqli_connec() pb de compilation?
 			if(!$connexion) {
-				echo"a<br/>";
 				echo "connexion none"; exit;
 			}
 			if (!mysqli_select_db($connexion,$base)){
-				echo"b<br/>";
 				echo "pas de base"; exit;
 			}
-			echo "blabla<br/>";	
 			if(!isset($_SESSION["nom"])){
 				$_SESSION["rank"]=0;
-				echo"c<br/>";
 				$pass=md5("$_POST[mdp1]");
 				$req="INSERT INTO users (nom, prenom, pseudo, mail,mdp,rank) VALUES('$_POST[nom]','$_POST[prenom]','$_POST[pseudo]','$_POST[mail]','$pass',0)";
 				mysqli_query($connexion,$req) OR die(mysqli_sqlstate($connexion));
