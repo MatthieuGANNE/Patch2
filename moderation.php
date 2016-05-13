@@ -1,6 +1,6 @@
 <?php
 
-function page_moderation(){
+function page_moderation(){ //Affiches tous les utilisateurs et permer à l'administrateur de les supprimer
 	$server= "localhost";
 	$user="root";
 	$base="blog";
@@ -41,7 +41,7 @@ function supprimer_utilisateur(){
 ;		echo "Le profil a bien été supprimé<br>";
 }
 
-function moderation_categorie(){
+function moderation_categorie(){ //Affiche toutes les catégorie, permet de les supprimer et d'en ajouter de nouvelle
 	echo "<form action=\"index.php?page=moderation_categorie\" method=\"post\">
 			Ajoutez une nouvelle catégorie<input type=\"text\" name=\"nouvelle_categorie\"</input>
 			<input type=\"submit\" value=\"Envoi\"</input>
@@ -100,7 +100,7 @@ function supprimer_categorie(){
 	
 }
 
-function redirection(){
+function redirection(){ // On l'utiliser si un utilisateur non administarteur appelle une page sensible directement via l'URL
 	return "<h1>Oops</h1>Vous n'avez pas l'autorisation pour accéder à cette page";
 }
 
