@@ -64,7 +64,7 @@ function afficher_article($n){
 		
 	
 }
-function article_form(){ // Ecriture d'un article
+function article_form(){ // Formulaire d'écriture d'un article
  	  echo "<form action=\"index.php?page=sauvegarde_article\" method=\"post\" id=\"article\">
                   Titre:<input type=\"text\" name=\"titre\"><br/>
 				 Genre:	<SELECT name=\"genre\" size=\"1\">" ;
@@ -125,7 +125,7 @@ function article_sauvegarde(){
 	echo "Publication réussie";
 	header('Location: index.php');
  }
-function article_commentaire($n){
+function article_commentaire($n){ //affiche les commentaires 
 	$server= "localhost";
 			$user="root";
 			$base="blog";
@@ -169,7 +169,7 @@ function article_commentaire($n){
 		$ligne = mysqli_fetch_assoc($resultat);
 		}
 }
-function article_partiel($n){
+function article_partiel($n){ // Utilisé pour les articles de la page d'accueil
 	
 	$server= "localhost";
 	$user="root";
@@ -241,7 +241,7 @@ function accueil_article(){ // affichage des articles dans la page d'accueil
 		 
 	
 }
-function titre_article($n){
+function titre_article($n){ 
 	$server= "localhost";
 			$user="root";
 			$base="blog";
@@ -272,7 +272,7 @@ function titre_article($n){
 		}
 		return "<a href =\"index.php?page=consulter&id=$n\" >$titre</a> Auteur: $nom";
 }
-function afficher_titre_article(){
+function afficher_titre_article(){ // Affiche les anciens article et le nom de leur auteur
 	$server= "localhost";
 			$user="root";
 			$base="blog";
@@ -319,7 +319,7 @@ function afficher_titre_article(){
 			}
 	}
 	
-	function afficher_titre_utilisateur($session_mail){
+	function afficher_titre_utilisateur($session_mail){ // Affiche les anciens articles de l'utilisateur enregistré
 		$server= "localhost";
 			$user="root";
 			$base="blog";
