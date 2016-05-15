@@ -1,5 +1,5 @@
 <?php
-function identification(){ // Identification de l'utlisateur
+function identification(){ // Identification de l'utlisateur avec protection de l'inculsion
       $server= "localhost";
 			$user="root";
 			$base="blog";
