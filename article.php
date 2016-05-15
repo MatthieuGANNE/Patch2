@@ -1,7 +1,7 @@
 <?php
 
 
-function afficher_article($n){
+function afficher_article($n){ // Affiche l'article
 		$server= "localhost";
 		$user="root";
 		$base="blog";
@@ -29,7 +29,7 @@ function afficher_article($n){
 			WHERE id=$ligne[id_categorie]";
 	$resultat2 = mysqli_query($connexion,$req2);
 	$ligne2 = mysqli_fetch_assoc($resultat2);
-	if(!isset($_SESSION["mail"])){
+	if(!isset($_SESSION["mail"])){   // Affiche l'article sans possibilité de modification si l'utilisateru n'est pas connecté
       return "<div id=\"article\">
               <h1>$ligne[nom] $ligne2[nom]</h1>
               <h2>$ligne1[nom] $ligne1[prenom] $ligne1[pseudo]</h2>
@@ -37,19 +37,19 @@ function afficher_article($n){
               <p>$ligne[contenu]</p>
               </div><br>";
 	}
-	if ($_SESSION["rank"]==1 || $ligne1["pseudo"]==$_SESSION["pseudo"]){
+	if ($_SESSION["rank"]==1 || $ligne1["pseudo"]==$_SESSION["pseudo"]){ // Affiche l'article dans ub formulaire si l'utilasateur est un administrateur ou si l'utisateur est l'auteur de l'article
 		return "<div id=\"article_entier\">
               <h1>$ligne[nom] <span id=genre>$ligne2[nom]</span><a href=\"index.php?page=modifier_page&id=$n\">Modifier</a> <a href=\"index.php?page=supprimer_article&id=$n\">Supprimer</a><br/></h1>
               <h2>$ligne1[nom] $ligne1[prenom] $ligne1[pseudo]</h2>
               <h3>$ligne[date]</h3>
               <p>$ligne[contenu]</p>
               </div>  
-			  Commentaire: <br> <textarea rows=\"4\" cols=\"40\" name=\"contenu\"  placeholder=\"Commentaire\"></textarea>
+			  Commentaire: <br> <textarea rows=\"4\" cols=\"40\" name=\"contenu\"  placeholder=\"Commentaire\"></textarea> 
 			  <form action=\"index.php?page=sauvegarde_commentaire\" method=\"post\" id=\"comentaire\">
 			  <input type=\"hidden\" name=\"id\" value=$_GET[id]>
 			  <input type=\"submit\" value=\"Envoyer\"><br/>
-			  </form><br>";
-	}
+			  </form><br>"; // Formulaire d'écriture de commentaire pour l'article
+	} // Sinon  Envoyer l'article non modifiable avec la possibilité de poster un commentaire
 		return "<div id=\"article\">
               <h1>$ligne[nom] <span id=genre>$ligne2[nom]</span></h1>
               <h2>$ligne1[nom] $ligne1[prenom] $ligne1[pseudo]</h2>
@@ -64,7 +64,7 @@ function afficher_article($n){
 		
 	
 }
-function article_form(){ // Formulaire d'écriture d'un article
+function article_form(){ // Formulaire d'écriture d'un article avec le choix d'une catégorie
  	  echo "<form action=\"index.php?page=sauvegarde_article\" method=\"post\" id=\"article\">
                   Titre:<input type=\"text\" name=\"titre\"><br/>
 				 Genre:	<SELECT name=\"genre\" size=\"1\">" ;
@@ -79,11 +79,11 @@ function article_form(){ // Formulaire d'écriture d'un article
 			if (!mysqli_select_db($connexion,$base)){
 			echo "pas de base"; exit;
 			}	
-		$req= "SELECT *
+	$req= "SELECT *
         FROM categorie
         WHERE 1";
-		$resultat = mysqli_query($connexion,$req);
-	    $ligne = mysqli_fetch_assoc($resultat);
+	$resultat = mysqli_query($connexion,$req);
+	$ligne = mysqli_fetch_assoc($resultat);
 				 while($ligne){
 					echo "<option value=\"$ligne[id]\">$ligne[nom]</option>";	
 					$ligne = mysqli_fetch_assoc($resultat);					 
@@ -93,7 +93,7 @@ function article_form(){ // Formulaire d'écriture d'un article
            </form>
  		   Contenu : <br> <textarea rows=\"25\" cols=\"75\" name=\"contenu\" form=\"article\" placeholder=\"Article\"></textarea>";
 }
-function article_sauvegarde(){
+function article_sauvegarde(){ // dontion interne qui sauvegarde l'article dans la base de donnée et protège les données envoyée puis renvoie à la page d'accueil
 	
 	 $server= "localhost";
 			$user="root";
@@ -125,7 +125,7 @@ function article_sauvegarde(){
 	echo "Publication réussie";
 	header('Location: index.php');
  }
-function article_commentaire($n){ //affiche les commentaires 
+function article_commentaire($n){ //Affiche les commentaires 
 	$server= "localhost";
 			$user="root";
 			$base="blog";
@@ -241,7 +241,7 @@ function accueil_article(){ // affichage des articles dans la page d'accueil
 		 
 	
 }
-function titre_article($n){ 
+function titre_article($n){ //Fonction utilisée dans la fonction qui affiche tout les articles
 	$server= "localhost";
 			$user="root";
 			$base="blog";
@@ -286,7 +286,7 @@ function afficher_titre_article(){ // Affiche les anciens article et le nom de l
 			}
 			echo "<form action=\"index.php?page=ancien_article\" method=\"post\">
 			Genre:	<SELECT name=\"genre\" size=\"1\">
-					<option value=\"-1\">Tous</option>" ;
+					<option value=\"-1\">Tous</option>" ; // Possibilité de Trier les articles par genre
 			$req= "SELECT *
 			FROM categorie
 			WHERE 1";
@@ -378,7 +378,7 @@ function article_modification($n){ // modification d'un article
 		   Contenu : <br> <textarea rows=\"25\" cols=\"75\" name=\"contenu\" form=\"article\">
 	$ligne[contenu]</textarea>";
 }
-function sauvegarde_modification_article() {
+function sauvegarde_modification_article() { // Fontion interne qui enregistre la modification d'un article dans la base de données en protégeant des inclusions
 	 $server= "localhost";
 			$user="root";
 			$base="blog";
@@ -401,7 +401,7 @@ function sauvegarde_modification_article() {
 	echo "Publication réussie<br>";
 }
 
-function supprimer_article(){
+function supprimer_article(){ // Suprimme l'article demandé par l'utilisateur
 	$server= "localhost";
 				$user="root";
 				$base="blog";
