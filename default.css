@@ -1,7 +1,7 @@
 body {
 	position: relative;
 	}
-header {
+header { 
 	display:float;
 	border:2px solid red;
 	border-radius:10px;
@@ -14,7 +14,7 @@ header h1 a {
 	text-decoration:none;
 	color:black;
 }
-.menu a{
+.menu a{ /*Encadre les options*/
 	border: 1px solid black;
 	text-decoration:none;
 	color: black;
@@ -23,7 +23,7 @@ footer {
 	position: relative; 
 	}
 	
-.fixe{
+.fixe{ /*Pour le retour à l'accueil et en haut-de-page*/
 	position: fixed;
 	bottom: 0; 
 	left: 0; 
@@ -34,7 +34,7 @@ footer {
 	display:float;
 	text-align:center;
 }
-#article_entier h1 a{
+#article_entier h1 a{  /*Réduit la taille des options Supprimer et Modifier*/
 	font-size:small;
 }
 
