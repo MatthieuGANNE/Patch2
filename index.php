@@ -86,7 +86,7 @@
 		   echo afficher_titre_utilisateur($_SESSION['mail']);
 	}
 	
-	if ($_GET["page"]=="modifier_page"){
+	if ($_GET["page"]=="modifier_page"){ //Affiche la page de modification d'article
 		    $req= "SELECT pseudo
 					FROM users
 					WHERE id = (SELECT id_users FROM article WHERE id=$_GET[id])";
@@ -99,7 +99,7 @@
 		}
 	   }
 	   
-	   if ($_GET["page"]=="modifier_article"){
+	   if ($_GET["page"]=="modifier_article"){ //Enregistre les modifications d'un article
 		   $req= "SELECT pseudo
 					FROM users
 					WHERE id = (SELECT id_users FROM article WHERE id=$_GET[id])";
@@ -112,7 +112,7 @@
 		}
 	   }
 	   
-	   if ($_GET["page"]=="supprimer_article"){
+	   if ($_GET["page"]=="supprimer_article"){ //Supprimer un article
 		   $req= "SELECT pseudo
 					FROM users
 					WHERE id = (SELECT id_users FROM article WHERE id=$_GET[id])";
@@ -125,7 +125,7 @@
 		}
 	   }
 	   
-	   if ($_GET["page"]=="moderation_utilisateur"){
+	   if ($_GET["page"]=="moderation_utilisateur"){ //Affiche la page affichant tous les utilisateurs et permettant de les supprimer
 		   if (isset($_SESSION["rank"]) && $_SESSION["rank"]==1){
 		   echo page_moderation();
 		   }else {
@@ -133,7 +133,7 @@
 			}
 	   }
 	   
-	   if ($_GET["page"]=="article_utilisateur"){
+	   if ($_GET["page"]=="article_utilisateur"){ //Affiche tous les articles écrit par un utilisateur
 		   $req= "SELECT mail
 				  FROM users
 					WHERE id=$_GET[id]";
@@ -142,7 +142,7 @@
 		   echo afficher_titre_utilisateur($ligne['mail']);
 	   }
 	   
-	   if ($_GET["page"]=="supprimer_utilisateur"){
+	   if ($_GET["page"]=="supprimer_utilisateur"){ //Supprime un utilisateur
 		   if (isset($_SESSION["rank"]) && $_SESSION["rank"]==1){
 		   echo supprimer_utilisateur();
 		   }else {
@@ -150,14 +150,14 @@
 			}
 	   }
 	   
-	   if ($_GET["page"]=="moderation_categorie"){
+	   if ($_GET["page"]=="moderation_categorie"){ //Affiche la page affichant tous les catégories et permettant de les supprimer
 		   if (isset($_SESSION["rank"]) && $_SESSION["rank"]==1){
 		   echo moderation_categorie();
 		   }else {
 				echo redirection();
 			}
 	   }
-	   if ($_GET["page"]=="supprimer_categorie"){
+	   if ($_GET["page"]=="supprimer_categorie"){ //Supprime une categorie
 		    if (isset($_SESSION["rank"]) && $_SESSION["rank"]==1){
 				echo supprimer_categorie();
 			}else {
@@ -165,7 +165,7 @@
 			}
 	   }
 	   
-	   if ($_GET["page"]=="supprimer_commentaire"){
+	   if ($_GET["page"]=="supprimer_commentaire"){ //Supprime un commentaire
 		     $req= "SELECT *
 					FROM users AS u, article AS a, commentaire AS c
 					WHERE c.id=$_GET[id]
