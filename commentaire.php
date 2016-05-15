@@ -1,5 +1,5 @@
 <?php
-function sauvegarde_commentaire(){
+function sauvegarde_commentaire(){ // Fontion interne qui enregistre les commentaires dans la base de donnée en protégeant contre les inclusions
 	$server= "localhost";
 	$user="root";
 	$base="blog";
