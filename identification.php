@@ -10,18 +10,17 @@ function identification(){ // Identification de l'utlisateur
 			}
 			if (!mysqli_select_db($connexion,$base)){
 			echo "pas de base"; exit;
-			}			
+			}
+			$nickname =htmlentities($_POST["nickname"]);
+			$nickname = mysqli_real_escape_string($nickname);
       $req= " SELECT *
               FROM users
-              WHERE pseudo='$_POST[nickname]'";
+              WHERE pseudo='$nickname'";
       if (!$resultat = mysqli_query($connexion,$req)){
          return "Identifiant ou mot de passe incorrect<br/>";
       }
 	  $ligne=mysqli_fetch_assoc($resultat);
-	  if ($ligne['bloque']==1){
-		  echo "Votre compte a été supprimé<br/>";
-	  } else{
-/* ----------------VOIR POUR LE HASHAGE --------------------------------------*/
+	  else{
 		$a=$_POST["mdp"];
 		$pass=md5($a);
       if ($ligne["mdp"]==$pass){
@@ -34,9 +33,7 @@ function identification(){ // Identification de l'utlisateur
       } else {
          return "Identifiant ou mot de passe incorrect<br/>";
       }        
-	  }
-/* ----------------VOIR POUR LE HASHAGE --------------------------------------*/
-
+      }
 }
 ?>
     
