@@ -38,6 +38,7 @@ id_article (int)
 id int Auro_increment) primary
 contenu (varchar)
 
+
 Le code SQL étant : 
   CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -48,7 +49,6 @@ Le code SQL étant :
   `mdp` varchar(256) NOT NULL,
   `rank` int(11) DEFAULT '0',
   `style` int(11) DEFAULT NULL,
-  `bloque` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `pseudo` (`pseudo`),
   UNIQUE KEY `mail` (`mail`)
@@ -86,5 +86,9 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   `date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) 
+
+Il existe un utilisateur administrateur découlant du code suivant:
+INSERT INTO `users` (`id`, `nom`, `prenom`, `pseudo`, `mail`, `mdp`, `rank`, `style`) VALUES
+('1','admin', 'admin', 'admin', 'a@a.a', '21232f297a57a5a743894a0e4a801fc3', 1, NULL);
 */
 ?>
