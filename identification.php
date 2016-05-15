@@ -12,15 +12,15 @@ function identification(){ // Identification de l'utlisateur avec protection de 
 			echo "pas de base"; exit;
 			}
 			$nickname =htmlentities($_POST["nickname"]);
-			$nickname = mysqli_real_escape_string($nickname);
+			$nickname = mysqli_real_escape_string($connexion, $nickname);
       $req= " SELECT *
               FROM users
               WHERE pseudo='$nickname'";
       if (!$resultat = mysqli_query($connexion,$req)){
          return "Identifiant ou mot de passe incorrect<br/>";
       }
-	  $ligne=mysqli_fetch_assoc($resultat);
 	  else{
+	  	$ligne=mysqli_fetch_assoc($resultat);
 		$a=$_POST["mdp"];
 		$pass=md5($a);
       if ($ligne["mdp"]==$pass){
