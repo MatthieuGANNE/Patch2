@@ -28,7 +28,7 @@ function sauvegarde(){
 			$user="root";
 			$base="blog";
 			$password="";
-			$connexion = mysqli_connect($server, $user, $password);//  mysqli_connec() pb de compilation?
+			$connexion = mysqli_connect($server, $user, $password);
 			if(!$connexion) {
 				echo "connexion none"; exit;
 			}
