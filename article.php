@@ -29,7 +29,7 @@ function afficher_article($n){ // Affiche l'article
 			WHERE id=$ligne[id_categorie]";
 	$resultat2 = mysqli_query($connexion,$req2);
 	$ligne2 = mysqli_fetch_assoc($resultat2);
-	if(!isset($_SESSION["mail"])){   // Affiche l'article sans possibilité de modification si l'utilisateru n'est pas connecté
+	if(!isset($_SESSION["mail"])){   // Affiche l'article sans possibilité de modification si l'utilisateur n'est pas connecté
       return "<div id=\"article\">
               <h1>$ligne[nom] $ligne2[nom]</h1>
               <h2>$ligne1[nom] $ligne1[prenom] $ligne1[pseudo]</h2>
@@ -37,7 +37,7 @@ function afficher_article($n){ // Affiche l'article
               <p>$ligne[contenu]</p>
               </div><br>";
 	}
-	if ($_SESSION["rank"]==1 || $ligne1["pseudo"]==$_SESSION["pseudo"]){ // Affiche l'article dans ub formulaire si l'utilasateur est un administrateur ou si l'utisateur est l'auteur de l'article
+	if ($_SESSION["rank"]==1 || $ligne1["pseudo"]==$_SESSION["pseudo"]){ // Affiche l'article dans un formulaire si l'utilisateur est un administrateur ou si l'utisateur est l'auteur de l'article
 		return "<div id=\"article_entier\">
               <h1>$ligne[nom] <span id=genre>$ligne2[nom]</span><a href=\"index.php?page=modifier_page&id=$n\">Modifier</a> <a href=\"index.php?page=supprimer_article&id=$n\">Supprimer</a><br/></h1>
               <h2>$ligne1[nom] $ligne1[prenom] $ligne1[pseudo]</h2>
@@ -401,7 +401,7 @@ function sauvegarde_modification_article() { // Fontion interne qui enregistre l
 	echo "Publication réussie<br>";
 }
 
-function supprimer_article(){ // Suprimme l'article demandé par l'utilisateur
+function supprimer_article(){ // Supprime l'article demandé par l'utilisateur
 	$server= "localhost";
 				$user="root";
 				$base="blog";
