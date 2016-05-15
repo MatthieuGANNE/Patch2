@@ -23,7 +23,7 @@ function page_moderation(){ //Affiches tous les utilisateurs et permer à l'admi
 		echo"<br>";
 		}
 }
-function supprimer_utilisateur(){
+function supprimer_utilisateur(){ // Fontion interne qui supprime l'utilisateur
 	$server= "localhost";
 	$user="root";
 	$base="blog";
@@ -76,7 +76,7 @@ function moderation_categorie(){ //Affiche toutes les catégorie, permet de les 
 		}	
 }
 
-function supprimer_categorie(){
+function supprimer_categorie(){ // Supprime la catégorie et met a jour l'id_categorie des articles concernés
 	
 	$server= "localhost";
 	$user="root";
@@ -104,7 +104,7 @@ function redirection(){ // On l'utiliser si un utilisateur non administarteur ap
 	return "<h1>Oops</h1>Vous n'avez pas l'autorisation pour accéder à cette page";
 }
 
-function supprimer_commentaire(){
+function supprimer_commentaire(){ // Fonction interne qui supprime le commentaire de la base de donnée
 	$server= "localhost";
 	$user="root";
 	$base="blog";
